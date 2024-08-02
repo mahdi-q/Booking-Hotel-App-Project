@@ -245,8 +245,8 @@
   font-weight: 400;
 }
 
-/* app layout */
-.appLayout {
+/* hotel layout */
+.hotelLayout {
   margin-top: 1rem;
   display: flex;
   justify-content: space-between;
