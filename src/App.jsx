@@ -1,7 +1,12 @@
 import "./App.css";
+import Header from "./Components/Header/Header";
 
 function App() {
-  return <h1>Booking Hotel App Project</h1>;
+  return (
+    <div>
+      <Header />
+    </div>
+  );
 }
 
 export default App;

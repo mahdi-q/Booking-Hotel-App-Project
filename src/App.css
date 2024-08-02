@@ -1,11 +1,14 @@
 @import url("https://unpkg.com/leaflet@1.9.4/dist/leaflet.css");
 
+/* header styles */
+
 .header {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
 }
+
 .headerSearch {
   display: flex;
   width: 100%;
@@ -18,15 +21,12 @@
   padding: 1rem;
 }
 
-.headerSearchInput {
-  padding: 0.7rem 0.5rem;
-  font-size: 1rem;
-}
 .headerSearchItem {
   display: flex;
   align-items: center;
   position: relative;
 }
+
 .headerSearchItem .seperator {
   display: inline-block;
   width: 1px;
@@ -34,17 +34,37 @@
   background-color: var(--text-400);
   margin: 0 1rem;
 }
-.textField {
-  padding: 0.7rem 1rem;
-  border-radius: 0.5rem;
-}
+
 .headerIcon {
   width: 1.5rem;
   height: 1.5rem;
   display: inline-block;
 }
+
+.headerSearchInput {
+  padding: 0.7rem 0.5rem;
+  font-size: 1rem;
+}
+.textField {
+  padding: 0.7rem 1rem;
+  border-radius: 0.5rem;
+}
 .locationIcon {
   color: var(--rose-500);
+}
+
+.dateDropDown {
+  margin-left: 0.5rem;
+  font-size: 0.8rem;
+}
+.dateIcon {
+  color: var(--primary-700);
+}
+.date {
+  position: absolute;
+  top: 50px;
+  left: -5rem;
+  z-index: 1002;
 }
 
 .guestOptions {
@@ -55,13 +75,12 @@
   border: 1px solid var(--text-100);
   position: absolute;
   top: 2rem;
-  width: 220px;
+  width: 230px;
   z-index: 1000;
 }
 .guestOptionItem {
   display: flex;
   align-items: center;
-  gap: 1rem;
   justify-content: space-between;
 }
 .guestOptionItem:not(:last-child) {
@@ -82,27 +101,10 @@
   flex: 1;
   font-size: 0.9rem;
 }
-
 .optionCounter {
   display: flex;
   align-items: center;
   gap: 1rem;
-}
-
-.date {
-  position: absolute;
-  top: 50px;
-  left: -5rem;
-  z-index: 1002;
-}
-
-.dateIcon {
-  color: var(--primary-700);
-}
-
-.dateDropDown {
-  margin-left: 0.5rem;
-  font-size: 0.8rem;
 }
 
 .headerSearchBtn {
