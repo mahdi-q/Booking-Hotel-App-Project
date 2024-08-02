@@ -36,7 +36,7 @@ function Header() {
     setOption((prev) => {
       return {
         ...prev,
-        [type]: operation === "inc" ? option[type]++ : option[type]--,
+        [type]: operation === "inc" ? option[type] + 1 : option[type] - 1,
       };
     });
   };
