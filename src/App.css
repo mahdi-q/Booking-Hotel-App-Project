@@ -217,6 +217,7 @@
 
 .searchList .searchItem {
   display: flex;
+  align-items: center;
   gap: 1rem;
 }
 .searchList .searchItem img {
@@ -226,7 +227,7 @@
   border-radius: 1rem;
 }
 .searchItem .searchItemDesc p {
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
 }
 .searchItem .searchItemDesc .name {
   color: var(--text-400);

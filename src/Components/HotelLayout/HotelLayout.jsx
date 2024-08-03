@@ -4,7 +4,6 @@ function HotelLayout() {
   return (
     <div className="hotelLayout">
       <div className="sidebar">
-        sidebar
         <Outlet />
       </div>
       <div className="mapContainer">map</div>
