@@ -6,26 +6,50 @@ import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { DateRange } from "react-date-range";
 import { format } from "date-fns";
-import { createSearchParams, useNavigate } from "react-router-dom";
+import {
+  createSearchParams,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
+
+let Initial_Option = {
+  adult: 1,
+  children: 0,
+  room: 1,
+};
+
+let Initial_Date = {
+  startDate: new Date(),
+  endDate: new Date(),
+  key: "selection",
+};
 
 function Header() {
-  const [destination, setDestination] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
 
+  const [destination, setDestination] = useState(
+    searchParams.get("destination") || ""
+  );
+
+  if (JSON.parse(searchParams.get("option"))) {
+    Initial_Option = {
+      adult: JSON.parse(searchParams.get("option")).adult,
+      children: JSON.parse(searchParams.get("option")).children,
+      room: JSON.parse(searchParams.get("option")).room,
+    };
+  }
   const [openOption, setOpenOption] = useState(false);
-  const [option, setOption] = useState({
-    adult: 1,
-    children: 0,
-    room: 1,
-  });
+  const [option, setOption] = useState(Initial_Option);
 
-  const [openDate, setOpenDate] = useState(false);
-  const [date, setDate] = useState([
-    {
-      startDate: new Date(),
-      endDate: new Date(),
+  if (JSON.parse(searchParams.get("date"))) {
+    Initial_Date = {
+      startDate: new Date(JSON.parse(searchParams.get("date")).startDate),
+      endDate: new Date(JSON.parse(searchParams.get("date")).endDate),
       key: "selection",
-    },
-  ]);
+    };
+  }
+  const [openDate, setOpenDate] = useState(false);
+  const [date, setDate] = useState(Initial_Date);
 
   const navigate = useNavigate();
 
@@ -80,8 +104,8 @@ function Header() {
             className="dateDropDown"
             onClick={() => setOpenDate(!openDate)}
           >
-            {`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(
-              date[0].endDate,
+            {`${format(date.startDate, "MM/dd/yyyy")} to ${format(
+              date.endDate,
               "MM/dd/yyyy"
             )}`}
           </div>
@@ -90,8 +114,8 @@ function Header() {
             {openDate && (
               <DateRange
                 className="date"
-                ranges={date}
-                onChange={(item) => setDate([item.selection])}
+                ranges={[date]}
+                onChange={(item) => setDate(item.selection)}
                 minDate={new Date()}
                 moveRangeOnFirstSelection={true}
               />
