@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+import Map from "../Map/Map";
 
 function HotelLayout() {
   return (
@@ -6,7 +7,7 @@ function HotelLayout() {
       <div className="sidebar">
         <Outlet />
       </div>
-      <div className="mapContainer">map</div>
+      <Map />
     </div>
   );
 }
