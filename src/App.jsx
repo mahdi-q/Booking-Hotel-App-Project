@@ -5,10 +5,11 @@ import { Route, Routes } from "react-router-dom";
 import HotelLayout from "./Components/HotelLayout/HotelLayout";
 import AppLayout from "./Components/AppLayout/AppLayout";
 import Hotels from "./Components/Hotels/Hotels";
+import { HotelsProvider } from "./Contexts/HotelsContext";
 
 function App() {
   return (
-    <div>
+    <HotelsProvider>
       <Toaster />
       <Routes>
         <Route path="/" element={<AppLayout />}>
@@ -19,7 +20,7 @@ function App() {
           </Route>
         </Route>
       </Routes>
-    </div>
+    </HotelsProvider>
   );
 }
 
