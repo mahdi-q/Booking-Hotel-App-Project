@@ -250,7 +250,7 @@
 }
 
 /* hotel layout */
-.hotelLayout {
+.hotelLayout ,.bookmarkLayout{
   margin-top: 1rem;
   display: flex;
   justify-content: space-between;
