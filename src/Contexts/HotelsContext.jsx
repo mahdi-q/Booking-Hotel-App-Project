@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import useFetch from "../Hooks/useFetch";
 import axios from "axios";
@@ -22,10 +22,6 @@ export function HotelsProvider({ children }) {
     Base_Url,
     `host_location_like=${destination || ""}&accommodates_gte=${room || 1}`
   );
-
-  useEffect(() => {
-    setCurrentHotel(hotels[0]);
-  }, [hotels]);
 
   async function getSingleHotel(id) {
     try {

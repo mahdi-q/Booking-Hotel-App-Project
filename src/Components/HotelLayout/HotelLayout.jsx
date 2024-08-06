@@ -3,7 +3,7 @@ import Map from "../Map/Map";
 import { useHotels } from "../../Contexts/HotelsContext";
 
 function HotelLayout() {
-  const { hotels, isLoading } = useHotels();
+  const { hotels } = useHotels();
 
   return (
     <div className="hotelLayout">
