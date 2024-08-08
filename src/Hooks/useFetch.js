@@ -22,5 +22,5 @@ export default function useFetch(url, query = "") {
     fetchData();
   }, [url, query]);
 
-  return { data, isLoading };
+  return { data, setData, isLoading };
 }

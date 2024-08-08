@@ -11,12 +11,30 @@ export function BookmarksProvider({ children }) {
   const [currentBookmark, setCurrentBookmark] = useState({});
   const [isLoadingCurrBookmark, setIsLoadingCurrBookmark] = useState(false);
 
-  const { data: bookmarks, isLoading } = useFetch(Base_Url, "");
+  const {
+    data: bookmarks,
+    setData: setBookmarks,
+    isLoading,
+  } = useFetch(Base_Url, "");
 
   async function getSingleBookmark(id) {
     try {
       setIsLoadingCurrBookmark(true);
+      setCurrentBookmark(null);
       const { data } = await axios.get(`${Base_Url}/${id}`);
+      setCurrentBookmark(data);
+    } catch (error) {
+      toast.error(error?.message);
+    } finally {
+      setIsLoadingCurrBookmark(false);
+    }
+  }
+
+  async function createBookmark(newBookmark) {
+    try {
+      setIsLoadingCurrBookmark(true);
+      const { data } = await axios.post(Base_Url, newBookmark);
+      setBookmarks((prev) => [...prev, data]);
       setCurrentBookmark(data);
     } catch (error) {
       toast.error(error?.message);
@@ -33,6 +51,7 @@ export function BookmarksProvider({ children }) {
         currentBookmark,
         isLoadingCurrBookmark,
         getSingleBookmark,
+        createBookmark,
       }}
     >
       {children}

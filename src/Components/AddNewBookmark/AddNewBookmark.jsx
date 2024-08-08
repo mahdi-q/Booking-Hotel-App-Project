@@ -6,6 +6,8 @@ import ReactCountryFlag from "react-country-flag";
 import axios from "axios";
 import Loader from "../Loader/Loader";
 import ErrorComponent from "../Error/ErrorComponent";
+import { useBookmarks } from "../../Contexts/BookmarksContext";
+import toast from "react-hot-toast";
 
 const Base_GeoCoding_Url =
   "https://api.bigdatacloud.net/data/reverse-geocode-client";
@@ -20,6 +22,8 @@ function AddNewBookmark() {
   const [geoCodingError, setGeoCodingError] = useState(null);
 
   const [lat, lng] = useLocationUrl();
+
+  const { bookmarks, createBookmark } = useBookmarks();
 
   useEffect(() => {
     async function fetchLocationData() {
@@ -54,6 +58,32 @@ function AddNewBookmark() {
     fetchLocationData();
   }, [lat, lng]);
 
+  const handleAddNewBookmark = (e) => {
+    e.preventDefault();
+
+    if (!cityName || !country || !countryCode) return;
+
+    const newBookmark = {
+      cityName,
+      country,
+      countryCode,
+      latitude: lat,
+      longitude: lng,
+      host_location: `${cityName} ${country}`,
+    };
+
+    if (
+      bookmarks.find((item) => item.latitude === newBookmark.latitude) ===
+      undefined
+    ) {
+      createBookmark(newBookmark);
+      navigate("/bookmarks");
+      toast.success("Bookmark successfully added");
+    } else {
+      toast.error("This location is already exist.");
+    }
+  };
+
   if (isLoadingGeoCoding) return <Loader />;
   if (geoCodingError) return <ErrorComponent>{geoCodingError}</ErrorComponent>;
 
@@ -61,7 +91,7 @@ function AddNewBookmark() {
     <div className="addNewBookmark">
       <h2>Bookmark New Location</h2>
 
-      <form className="form">
+      <form className="form" onSubmit={handleAddNewBookmark}>
         <div className="formControl">
           <label htmlFor="cityName">City Name</label>
           <input
