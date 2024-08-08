@@ -306,6 +306,9 @@
 }
 
 /* form */
+.addNewBookmark h2 {
+  margin-bottom: 1rem;
+}
 
 .form .formControl {
   margin-bottom: 1rem;
@@ -352,7 +355,7 @@
 .formControl .flag {
   position: absolute;
   right: 1rem;
-  top: 50%;
+  top: 55%;
 }
 
 a.active {

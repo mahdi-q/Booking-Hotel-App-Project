@@ -7,14 +7,16 @@ import {
   useMapEvent,
 } from "react-leaflet";
 import { useEffect, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useGeoLocation from "../../Hooks/useGeoLocation";
+import useLocationUrl from "../../Hooks/useLocationUrl";
 
 function Map({ markerLocations }) {
-  const [searchParams] = useSearchParams();
   const [mapCenter, setMapCenter] = useState([
     51.50548368506733, -0.12634277343750003,
   ]);
+
+  const [lat, lng] = useLocationUrl();
 
   const {
     isLoading: isLoadingPosition,
@@ -22,9 +24,6 @@ function Map({ markerLocations }) {
     error,
     getPosition,
   } = useGeoLocation();
-
-  const lat = searchParams.get("lat");
-  const lng = searchParams.get("lng");
 
   useEffect(() => {
     if (lat && lng) setMapCenter([lat, lng]);
