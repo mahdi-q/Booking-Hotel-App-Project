@@ -1,6 +1,12 @@
-function ErrorComponent({children}) {
+function ErrorComponent({ children }) {
   return (
-    <div style={{ fontWeight: "bold", color: "var(--rose-500)" }}>
+    <div
+      style={{
+        fontWeight: "bold",
+        color: "var(--rose-500)",
+        marginTop: "2rem",
+      }}
+    >
       {children}
     </div>
   );

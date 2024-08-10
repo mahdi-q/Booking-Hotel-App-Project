@@ -43,6 +43,18 @@ export function BookmarksProvider({ children }) {
     }
   }
 
+  async function deleteBookmark(id) {
+    try {
+      setIsLoadingCurrBookmark(true);
+      await axios.delete(`${Base_Url}/${id}`);
+      setBookmarks((prev) => prev.filter((item) => item.id !== id));
+    } catch (error) {
+      toast.error(error?.message);
+    } finally {
+      setIsLoadingCurrBookmark(false);
+    }
+  }
+
   return (
     <BookmarksContext.Provider
       value={{
@@ -52,6 +64,7 @@ export function BookmarksProvider({ children }) {
         isLoadingCurrBookmark,
         getSingleBookmark,
         createBookmark,
+        deleteBookmark,
       }}
     >
       {children}
