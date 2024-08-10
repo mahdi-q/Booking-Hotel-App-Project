@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useGeoLocation from "../../Hooks/useGeoLocation";
 import useLocationUrl from "../../Hooks/useLocationUrl";
+import toast from "react-hot-toast";
 
 function Map({ markerLocations }) {
   const [mapCenter, setMapCenter] = useState([
@@ -30,7 +31,7 @@ function Map({ markerLocations }) {
   }, [lat, lng]);
 
   useEffect(() => {
-    if (error) throw new Error(error);
+    if (error) toast.error(error);
 
     if (position?.lat && position?.lng)
       setMapCenter([position.lat, position.lng]);
@@ -41,7 +42,7 @@ function Map({ markerLocations }) {
       <MapContainer
         className="map"
         center={mapCenter}
-        zoom={13}
+        zoom={10}
         scrollWheelZoom={true}
       >
         <button onClick={getPosition} className="getLocation">
@@ -77,9 +78,14 @@ function ChangeCenter({ position }) {
 
 function DetectClick() {
   const navigate = useNavigate();
+
   useMapEvent({
-    click: (e) =>
-      navigate(`/bookmarks/add?lat=${e.latlng.lat}&lng=${e.latlng.lng}`),
+    click: (e) => {
+      if (e.originalEvent.srcElement.className !== "getLocation") {
+        navigate(`/bookmarks/add?lat=${e.latlng.lat}&lng=${e.latlng.lng}`);
+      }
+    },
   });
+
   return null;
 }
