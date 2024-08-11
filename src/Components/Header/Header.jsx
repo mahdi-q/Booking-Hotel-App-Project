@@ -1,4 +1,4 @@
-import { MdLocationOn } from "react-icons/md";
+import { MdLocationOn, MdLogin, MdMenu } from "react-icons/md";
 import { HiCalendar, HiMinus, HiPlus, HiSearch } from "react-icons/hi";
 import { useRef, useState } from "react";
 import useOutsideClick from "../../Hooks/useOutsideClick";
@@ -8,6 +8,7 @@ import { DateRange } from "react-date-range";
 import { format } from "date-fns";
 import {
   createSearchParams,
+  NavLink,
   useNavigate,
   useSearchParams,
 } from "react-router-dom";
@@ -51,10 +52,15 @@ function Header() {
   const [openDate, setOpenDate] = useState(false);
   const [date, setDate] = useState(Initial_Date);
 
+  const [openMenu, setOpenMenu] = useState(false);
+
   const navigate = useNavigate();
 
   const dateRef = useRef();
   useOutsideClick(dateRef, "dateDropDown", () => setOpenDate(false));
+
+  const menuRef = useRef();
+  useOutsideClick(menuRef, "menuDropDown", () => setOpenMenu(false));
 
   const handleChangeOption = (operation, type) => {
     setOption((prev) => {
@@ -79,6 +85,8 @@ function Header() {
 
   return (
     <div className="header">
+      <span className="wellcomeText">Hi, Mahdi</span>
+
       <div className="headerSearch">
         <div className="headerSearchItem">
           <MdLocationOn className="headerIcon locationIcon" />
@@ -147,6 +155,43 @@ function Header() {
             <HiSearch className="headerIcon" />
           </button>
         </div>
+      </div>
+
+      <button className="btn btn--primary authBtn">
+        <span>Login</span>
+        <MdLogin className="headerIcon loginIcon" />
+      </button>
+
+      <div>
+        <button
+          id="menuDropdown"
+          className="btn btn--primary"
+          onClick={() => setOpenMenu(!openMenu)}
+        >
+          <MdMenu className="headerIcon" />
+        </button>
+
+        {openMenu && (
+          <div className="menuLinks" ref={menuRef}>
+            <div className="menuLink">
+              <NavLink to={"/"} style={{ display: "block" }}>
+                Home
+              </NavLink>
+            </div>
+
+            <div className="menuLink">
+              <NavLink to={"/hotels"} style={{ display: "block" }}>
+                Hotels
+              </NavLink>
+            </div>
+
+            <div className="menuLink">
+              <NavLink to={"/bookmarks"} style={{ display: "block" }}>
+                Bookmarks
+              </NavLink>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -72,7 +72,7 @@
   box-shadow: 0 0 10px #efefef;
   border-radius: 1rem;
   padding: 1rem;
-  border: 1px solid var(--text-100);
+  border: 1px solid var(--text-300);
   position: absolute;
   top: 2rem;
   width: 230px;
@@ -117,14 +117,53 @@
   border-radius: 1rem;
 }
 
-/*  location list */
+.logoutIcon {
+  color: var(--rose-500);
+}
+.loginIcon {
+  color: var(--lime-300);
+}
+.authBtn span {
+  font-size: 1rem;
+}
+
+.menuLinks {
+  background-color: #fff;
+  box-shadow: 0 0 10px #efefef;
+  border-radius: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--text-300);
+  position: absolute;
+  top: 5rem;
+  right: 3rem;
+  width: 200px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+.menuLink {
+  border-bottom: 1px solid var(--text-300);
+}
+.menuLink:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.wellcomeText {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/*  location list styles */
+
 .nearbyLocation {
   max-width: 1280px;
   margin: 2rem auto;
 }
+
 .nearbyLocation h2 {
   margin-bottom: 1rem;
 }
+
 .locationList {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -143,7 +182,6 @@
 .locationItemDesc > :not(:last-child) {
   margin-bottom: 0.2rem;
 }
-
 .locationItem .locationItemDesc .name {
   color: var(--text-400);
 }
@@ -155,13 +193,13 @@
   display: flex;
   align-items: center;
 }
-
 .locationItem .locationItemDesc .price span {
   color: var(--text-400);
   font-weight: 400;
 }
 
-/* room detail */
+/* room detail styles */
+
 .room {
   display: flex;
   align-items: stretch;
@@ -184,7 +222,7 @@
   border-radius: 0.8rem;
 }
 
-/* map */
+/* map styles */
 
 .mapContainer {
   flex: 1;
@@ -208,27 +246,33 @@
   height: 100%;
 }
 
+/* search list styles */
+
 .searchList {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
-.searchList .searchItem.currentHotel {
-  border: 1px solid var(--primary-600);
-  border-radius: 1rem;
-  padding: 0.2rem;
-}
+
 .searchList .searchItem {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
+
+.searchList .searchItem.currentHotel {
+  border: 1px solid var(--primary-600);
+  border-radius: 1rem;
+  padding: 0.2rem;
+}
+
 .searchList .searchItem img {
   width: 6rem;
   height: 6rem;
   object-fit: cover;
   border-radius: 1rem;
 }
+
 .searchItem .searchItemDesc p {
   margin-bottom: 0.5rem;
 }
@@ -248,14 +292,14 @@
   font-weight: 400;
 }
 
-/* hotel layout */
+/* layout styles */
+
 .hotelLayout,
 .bookmarkLayout {
   margin-top: 1rem;
   display: flex;
   justify-content: space-between;
   height: calc(100vh - 130px);
-  /* background-color: var(--text-100); */
   align-items: stretch;
 }
 
@@ -265,22 +309,19 @@
   padding-right: 1rem;
 }
 
-.searchItem.current-hotel {
-  border: 3px solid var(--primary-700);
-  border-radius: 1rem;
-}
-
 @media screen and (min-width: 768px) {
   .sidebar {
     width: 50%;
   }
 }
 
-/* bookmark page */
+/* bookmark page style */
+
 .bookmarkList {
   margin-top: 1rem;
 }
-.bookmarkItem {
+
+.bookmarkList .bookmarkItem {
   margin-bottom: 1rem;
   border: 1px solid var(--text-400);
   border-radius: 1rem;
@@ -295,17 +336,14 @@
   background-color: var(--text-100);
 }
 
-.currentBookmark h2 {
-  margin: 1rem 0;
-}
-
-.bookmarkItem .trash {
+.bookmarkList .bookmarkItem .trash {
   color: var(--rose-500);
   width: 1.1rem;
   height: 1.1rem;
 }
 
-/* form */
+/* form style */
+
 .addNewBookmark h2 {
   margin-bottom: 1rem;
 }
@@ -319,12 +357,16 @@
   display: block;
   margin-bottom: 0.2rem;
 }
-
 .formControl input {
   border: 1px solid var(--text-400);
   padding: 0.5rem;
   border-radius: 0.5rem;
   width: 100%;
+}
+.formControl .flag {
+  position: absolute;
+  right: 1rem;
+  top: 55%;
 }
 
 .buttons {
@@ -333,54 +375,20 @@
   justify-content: space-between;
 }
 
-.btn {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 0.2rem;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-}
-.btn--primary {
-  background-color: var(--primary-600);
-  color: #fff;
-}
-
-.btn--back {
-  margin-bottom: 1rem;
-  border: 1px solid var(--text-400);
-}
-
-.formControl .flag {
-  position: absolute;
-  right: 1rem;
-  top: 55%;
-}
-
-a.active {
-  color: var(--primary-600);
-  font-weight: 700;
-}
+/* login form styles */
 
 .loginContainer {
-  margin: 2rem auto;
+  margin:5rem auto;
   max-width: 25rem;
   border: 1px solid var(--text-300);
   padding: 1rem;
   border-radius: 1rem;
 }
 
-.loginContainer button {
-  width: 100%;
-}
-
 .loginContainer h2 {
   margin-bottom: 1rem;
 }
 
-.icon.logout {
-  color: var(--rose-500);
-  width: 1.1rem;
-  height: 1.1rem;
+.loginContainer button {
+  width: 100%;
 }
