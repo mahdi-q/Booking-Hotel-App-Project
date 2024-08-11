@@ -157,7 +157,10 @@ function Header() {
         </div>
       </div>
 
-      <button className="btn btn--primary authBtn">
+      <button
+        onClick={() => navigate("/login")}
+        className="btn btn--primary authBtn"
+      >
         <span>Login</span>
         <MdLogin className="headerIcon loginIcon" />
       </button>
