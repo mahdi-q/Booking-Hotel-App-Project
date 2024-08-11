@@ -1,4 +1,4 @@
-import { MdLocationOn, MdLogin, MdMenu } from "react-icons/md";
+import { MdLocationOn, MdLogin, MdLogout, MdMenu } from "react-icons/md";
 import { HiCalendar, HiMinus, HiPlus, HiSearch } from "react-icons/hi";
 import { useRef, useState } from "react";
 import useOutsideClick from "../../Hooks/useOutsideClick";
@@ -12,6 +12,7 @@ import {
   useNavigate,
   useSearchParams,
 } from "react-router-dom";
+import { useAuth } from "../../Contexts/AuthContext";
 
 let Initial_Option = {
   adult: 1,
@@ -52,15 +53,12 @@ function Header() {
   const [openDate, setOpenDate] = useState(false);
   const [date, setDate] = useState(Initial_Date);
 
-  const [openMenu, setOpenMenu] = useState(false);
-
   const navigate = useNavigate();
+
+  const { user, isAuthenticated, logout } = useAuth();
 
   const dateRef = useRef();
   useOutsideClick(dateRef, "dateDropDown", () => setOpenDate(false));
-
-  const menuRef = useRef();
-  useOutsideClick(menuRef, "menuDropDown", () => setOpenMenu(false));
 
   const handleChangeOption = (operation, type) => {
     setOption((prev) => {
@@ -85,7 +83,7 @@ function Header() {
 
   return (
     <div className="header">
-      <span className="wellcomeText">Hi, Mahdi</span>
+      {isAuthenticated && <span className="wellcomeText">Hi, {user.name}</span>}
 
       <div className="headerSearch">
         <div className="headerSearchItem">
@@ -157,45 +155,13 @@ function Header() {
         </div>
       </div>
 
-      <button
-        onClick={() => navigate("/login")}
-        className="btn btn--primary authBtn"
-      >
-        <span>Login</span>
-        <MdLogin className="headerIcon loginIcon" />
-      </button>
+      <UserAuthentication
+        isAuthenticated={isAuthenticated}
+        logout={logout}
+        navigate={navigate}
+      />
 
-      <div>
-        <button
-          id="menuDropdown"
-          className="btn btn--primary"
-          onClick={() => setOpenMenu(!openMenu)}
-        >
-          <MdMenu className="headerIcon" />
-        </button>
-
-        {openMenu && (
-          <div className="menuLinks" ref={menuRef}>
-            <div className="menuLink">
-              <NavLink to={"/"} style={{ display: "block" }}>
-                Home
-              </NavLink>
-            </div>
-
-            <div className="menuLink">
-              <NavLink to={"/hotels"} style={{ display: "block" }}>
-                Hotels
-              </NavLink>
-            </div>
-
-            <div className="menuLink">
-              <NavLink to={"/bookmarks"} style={{ display: "block" }}>
-                Bookmarks
-              </NavLink>
-            </div>
-          </div>
-        )}
-      </div>
+      <Menu />
     </div>
   );
 }
@@ -252,6 +218,74 @@ function GuestOptionItem({ type, option, minLimit, onChangeOption }) {
           <HiPlus className="headerIcon" />
         </button>
       </div>
+    </div>
+  );
+}
+
+function UserAuthentication({ isAuthenticated, logout, navigate }) {
+  const handleAuthentication = () => {
+    if (!isAuthenticated) {
+      navigate("/login");
+    } else {
+      logout();
+      navigate("/");
+    }
+  };
+
+  return (
+    <button onClick={handleAuthentication} className="btn btn--primary authBtn">
+      {isAuthenticated ? (
+        <>
+          <span>Logout</span>
+          <MdLogout className="headerIcon logoutIcon" />
+        </>
+      ) : (
+        <>
+          <span>Login</span>
+          <MdLogin className="headerIcon loginIcon" />
+        </>
+      )}
+    </button>
+  );
+}
+
+function Menu() {
+  const [openMenu, setOpenMenu] = useState(false);
+
+  const menuRef = useRef();
+  useOutsideClick(menuRef, "menuDropDown", () => setOpenMenu(false));
+
+  return (
+    <div>
+      <button
+        id="menuDropdown"
+        className="btn btn--primary"
+        onClick={() => setOpenMenu(!openMenu)}
+      >
+        <MdMenu className="headerIcon" />
+      </button>
+
+      {openMenu && (
+        <div className="menuLinks" ref={menuRef}>
+          <div className="menuLink">
+            <NavLink to={"/"} style={{ display: "block" }}>
+              Home
+            </NavLink>
+          </div>
+
+          <div className="menuLink">
+            <NavLink to={"/hotels"} style={{ display: "block" }}>
+              Hotels
+            </NavLink>
+          </div>
+
+          <div className="menuLink">
+            <NavLink to={"/bookmarks"} style={{ display: "block" }}>
+              Bookmarks
+            </NavLink>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

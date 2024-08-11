@@ -118,10 +118,12 @@
 }
 
 .logoutIcon {
-  color: var(--rose-500);
+  color: #fb7185;
+  margin-left: 0.2rem;
 }
 .loginIcon {
   color: var(--lime-300);
+  margin-left: 0.2rem;
 }
 .authBtn span {
   font-size: 1rem;
@@ -378,7 +380,7 @@
 /* login form styles */
 
 .loginContainer {
-  margin:5rem auto;
+  margin: 5rem auto;
   max-width: 25rem;
   border: 1px solid var(--text-300);
   padding: 1rem;
