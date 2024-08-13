@@ -203,26 +203,46 @@
 /* room detail styles */
 
 .room {
-  display: flex;
-  align-items: stretch;
-  justify-content: space-between;
-  gap: 1rem;
   max-width: 1280px;
 }
 
-.roomDetail h2 {
-  margin-bottom: 0.3rem;
-  font-size: 1rem;
+.roomDetail{
+  display: flex;
+  gap: 1.5rem;
 }
-.roomDetail > div {
-  margin-bottom: 1rem;
-}
+
 .roomDetail img {
-  width: 100%;
+  width: 35%;
   height: auto;
   object-fit: cover;
   border-radius: 0.8rem;
 }
+
+.roomInfo{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.roomInfo .name {
+  font-size: 1.1rem;
+}
+.roomInfo .review{
+  color: var(--text-700);
+}
+.roomInfo .type{
+  color: var(--text-700);
+}
+.roomInfo .price{
+  color: var(--text-700);
+}
+.roomInfo .update{
+  display: flex;
+  flex-direction: row;
+  gap: 0.3rem;
+  color: var(--text-400);
+}
+
 
 /* map styles */
 
@@ -307,7 +327,7 @@
 
 .sidebar {
   width: 35%;
-  overflow-y: scroll;
+  overflow-y: auto;
   padding-right: 1rem;
 }
 
