@@ -42,7 +42,6 @@ function Map({ markerLocations }) {
       <MapContainer
         className="map"
         center={mapCenter}
-        zoom={10}
         scrollWheelZoom={true}
       >
         <button onClick={getPosition} className="getLocation">
@@ -73,6 +72,7 @@ export default Map;
 function ChangeCenter({ position }) {
   const map = useMap();
   map.setView(position);
+  map.setZoom(10)
   return null;
 }
 

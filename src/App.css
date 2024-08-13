@@ -206,7 +206,7 @@
   max-width: 1280px;
 }
 
-.roomDetail{
+.roomDetail {
   display: flex;
   gap: 1.5rem;
 }
@@ -218,7 +218,7 @@
   border-radius: 0.8rem;
 }
 
-.roomInfo{
+.roomInfo {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -227,22 +227,21 @@
 .roomInfo .name {
   font-size: 1.1rem;
 }
-.roomInfo .review{
+.roomInfo .review {
   color: var(--text-700);
 }
-.roomInfo .type{
+.roomInfo .type {
   color: var(--text-700);
 }
-.roomInfo .price{
+.roomInfo .price {
   color: var(--text-700);
 }
-.roomInfo .update{
+.roomInfo .update {
   display: flex;
   flex-direction: row;
   gap: 0.3rem;
   color: var(--text-400);
 }
-
 
 /* map styles */
 
@@ -276,19 +275,22 @@
   gap: 1rem;
 }
 
-.searchList .searchItem {
+.searchItem {
   display: flex;
   align-items: center;
   gap: 1rem;
+  border: 1px solid var(--text-300);
+  border-radius: 1rem;
+  padding: 0.2rem;
 }
 
-.searchList .searchItem.currentHotel {
+.searchItem.currentHotel {
   border: 1px solid var(--primary-600);
   border-radius: 1rem;
   padding: 0.2rem;
 }
 
-.searchList .searchItem img {
+.searchItem img {
   width: 6rem;
   height: 6rem;
   object-fit: cover;
@@ -340,11 +342,13 @@
 /* bookmark page style */
 
 .bookmarkList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   margin-top: 1rem;
 }
 
 .bookmarkList .bookmarkItem {
-  margin-bottom: 1rem;
   border: 1px solid var(--text-400);
   border-radius: 1rem;
   padding: 1rem;

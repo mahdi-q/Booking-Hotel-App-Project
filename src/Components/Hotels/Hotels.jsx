@@ -27,7 +27,7 @@ function Hotels() {
 
 export default Hotels;
 
-function SearchItem({ item, currentHotel }) {
+export function SearchItem({ item, currentHotel }) {
   return (
     <div
       className={`searchItem ${
