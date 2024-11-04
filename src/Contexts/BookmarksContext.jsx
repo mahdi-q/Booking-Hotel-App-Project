@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 
 const BookmarksContext = createContext([]);
 
-const Base_Url = "http://localhost:5000/bookmarks";
+const Base_Url = "https://booking-hotel-app-api-eight.vercel.app/bookmarks";
 
 const Initial_State = {
   bookmarks: [],

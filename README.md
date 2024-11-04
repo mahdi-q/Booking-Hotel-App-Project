@@ -31,15 +31,11 @@ A web application for searching hotels and adding bookmarks, developed using the
    ```bash
    npm install
    ```
-4. Run the json server:
-   ```bash
-   npm run server
-   ```
-5. Run the app:
+4. Run the app:
    ```bash
    npm run dev
    ```
-6. Click on the link provided in the terminal to open the app in your browser.
+5. Click on the link provided in the terminal to open the app in your browser.
 
 ## Features
 
@@ -66,7 +62,6 @@ Packages used in this project:
 
 - **axios**: HTTP client for making API requests.
 - **date-fns**: Date utility library for manipulating and formatting dates.
-- **json-server**: Tool to create a mock REST API from a JSON file.
 - **react-country-flag**: Component for displaying country flags in React.
 - **react-date-range**: Date range picker component for React.
 - **react-hot-toast**: Easy and customizable toast notifications in React.

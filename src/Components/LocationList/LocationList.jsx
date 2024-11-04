@@ -2,7 +2,10 @@ import useFetch from "../../Hooks/useFetch";
 import Loader from "../Loader/Loader";
 
 function LocationList() {
-  const { data, isLoading } = useFetch("http://localhost:5000/hotels", "");
+  const { data, isLoading } = useFetch(
+    "https://booking-hotel-app-api-eight.vercel.app/hotels",
+    ""
+  );
 
   return (
     <div className="nearbyLocation">
@@ -25,7 +28,7 @@ function LocationItem({ item }) {
   return (
     <div className="locationItem">
       <img src={item.xl_picture_url} alt={item.name} />
-      
+
       <div className="locationItemDesc">
         <p className="location">{item.smart_location}</p>
         <p className="name">{item.name}</p>

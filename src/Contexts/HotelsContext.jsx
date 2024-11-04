@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 
 const HotelsContext = createContext(null);
 
-const Base_Url = "http://localhost:5000/hotels";
+const Base_Url = "https://booking-hotel-app-api-eight.vercel.app/hotels";
 
 export function HotelsProvider({ children }) {
   const [searchParams] = useSearchParams();
