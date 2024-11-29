@@ -83,31 +83,31 @@ function Header() {
 
   return (
     <div className="header">
-      {isAuthenticated && <span className="wellcomeText">Hi, {user.name}</span>}
+      <div className="header__wellcome-text">
+        {isAuthenticated && <span>Hi, {user.name}</span>}
+      </div>
 
-      <div className="headerSearch">
-        <div className="headerSearchItem">
-          <MdLocationOn className="headerIcon locationIcon" />
+      <div className="header__search">
+        <div className="header__search-item">
+          <MdLocationOn className="search__icon location" />
 
           <input
+            className="search__input"
             value={destination}
             onChange={(e) => setDestination(e.target.value)}
             type="text"
             name="destination"
             id="destination"
-            className="headerSearchInput textField"
             placeholder="Where to go ?"
           />
-
-          <span className="seperator"></span>
         </div>
 
-        <div className="headerSearchItem">
-          <HiCalendar className="headerIcon dateIcon" />
+        <div className="header__search-item">
+          <HiCalendar className="search__icon date" />
 
           <div
+            className="search__date-dropDown"
             id="dateDropDown"
-            className="dateDropDown"
             onClick={() => setOpenDate(!openDate)}
           >
             {`${format(date.startDate, "MM/dd/yyyy")} to ${format(
@@ -119,7 +119,7 @@ function Header() {
           <div ref={dateRef}>
             {openDate && (
               <DateRange
-                className="date"
+                className="date-dropDown"
                 ranges={[date]}
                 onChange={(item) => setDate(item.selection)}
                 minDate={new Date()}
@@ -127,12 +127,14 @@ function Header() {
               />
             )}
           </div>
-
-          <span className="seperator"></span>
         </div>
 
-        <div className="headerSearchItem">
-          <div id="optionDropDown" onClick={() => setOpenOption(!openOption)}>
+        <div className="header__search-item">
+          <div
+            className="search__options-dropDown"
+            id="optionDropDown"
+            onClick={() => setOpenOption(!openOption)}
+          >
             {option.adult} Adult &bull; {option.children} Children &bull;{" "}
             {option.room} Room
           </div>
@@ -144,24 +146,24 @@ function Header() {
               setOpenOption={setOpenOption}
             />
           )}
-
-          <span className="seperator"></span>
         </div>
 
-        <div className="headerSearchItem">
-          <button className="headerSearchBtn" onClick={handleSearch}>
-            <HiSearch className="headerIcon" />
+        <div className="header__search-item">
+          <button className="search__btn" onClick={handleSearch}>
+            <HiSearch className="search__icon" />
           </button>
         </div>
       </div>
 
-      <UserAuthentication
-        isAuthenticated={isAuthenticated}
-        logout={logout}
-        navigate={navigate}
-      />
+      <div className="header__action-btns">
+        <UserAuthentication
+          isAuthenticated={isAuthenticated}
+          logout={logout}
+          navigate={navigate}
+        />
 
-      <Menu />
+        <Menu />
+      </div>
     </div>
   );
 }
@@ -173,7 +175,7 @@ function GuestOptionList({ option, onChangeOption, setOpenOption }) {
   useOutsideClick(optionRef, "optionDropDown", () => setOpenOption(false));
 
   return (
-    <div className="guestOptions" ref={optionRef}>
+    <div className="options-dropDown" ref={optionRef}>
       <GuestOptionItem
         type="Adult"
         option={option}
@@ -198,24 +200,25 @@ function GuestOptionList({ option, onChangeOption, setOpenOption }) {
 
 function GuestOptionItem({ type, option, minLimit, onChangeOption }) {
   return (
-    <div className="guestOptionItem">
-      <span className="optionText">{type}</span>
-      <div className="optionCounter">
+    <div className="option-item">
+      <span className="option__text">{type}</span>
+
+      <div className="option__counter">
         <button
-          className="optionCounterBtn"
+          className="option__counter__btn"
           disabled={option[type.toLowerCase()] <= minLimit}
           onClick={() => onChangeOption("dec", type.toLowerCase())}
         >
-          <HiMinus className="headerIcon" />
+          <HiMinus className="search__icon option" />
         </button>
 
         <span>{option[type.toLowerCase()]}</span>
 
         <button
-          className="optionCounterBtn"
+          className="option__counter__btn"
           onClick={() => onChangeOption("inc", type.toLowerCase())}
         >
-          <HiPlus className="headerIcon" />
+          <HiPlus className="search__icon option" />
         </button>
       </div>
     </div>
@@ -233,19 +236,21 @@ function UserAuthentication({ isAuthenticated, logout, navigate }) {
   };
 
   return (
-    <button onClick={handleAuthentication} className="btn btn--primary authBtn">
-      {isAuthenticated ? (
-        <>
-          <span>Logout</span>
-          <MdLogout className="headerIcon logoutIcon" />
-        </>
-      ) : (
-        <>
-          <span>Login</span>
-          <MdLogin className="headerIcon loginIcon" />
-        </>
-      )}
-    </button>
+    <div className="header__action-btn">
+      <button onClick={handleAuthentication} className="btn btn--primary">
+        {isAuthenticated ? (
+          <>
+            <span>Logout</span>
+            <MdLogout className="header__icon logout" />
+          </>
+        ) : (
+          <>
+            <span>Login</span>
+            <MdLogin className="header__icon login" />
+          </>
+        )}
+      </button>
+    </div>
   );
 }
 
@@ -256,30 +261,30 @@ function Menu() {
   useOutsideClick(menuRef, "menuDropDown", () => setOpenMenu(false));
 
   return (
-    <div>
+    <div className="header__action-btn">
       <button
-        id="menuDropdown"
         className="btn btn--primary"
+        id="menuDropdown"
         onClick={() => setOpenMenu(!openMenu)}
       >
-        <MdMenu className="headerIcon" />
+        <MdMenu className="header__icon" />
       </button>
 
       {openMenu && (
-        <div className="menuLinks" ref={menuRef}>
-          <div className="menuLink">
+        <div className="menu-links" ref={menuRef}>
+          <div className="menu__link">
             <NavLink to={"/"} style={{ display: "block" }}>
               Home
             </NavLink>
           </div>
 
-          <div className="menuLink">
+          <div className="menu__link">
             <NavLink to={"/hotels"} style={{ display: "block" }}>
               Hotels
             </NavLink>
           </div>
 
-          <div className="menuLink">
+          <div className="menu__link">
             <NavLink to={"/bookmarks"} style={{ display: "block" }}>
               Bookmarks
             </NavLink>
