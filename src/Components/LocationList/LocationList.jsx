@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import useFetch from "../../Hooks/useFetch";
 import Loader from "../Loader/Loader";
 
@@ -8,12 +9,12 @@ function LocationList() {
   );
 
   return (
-    <div className="nearbyLocation">
-      <h2>Nearby Location</h2>
+    <div className="nearby-locations">
+      <h2 className="locations__heading">Nearby Location</h2>
 
       {isLoading && <Loader />}
 
-      <div className="locationList">
+      <div className="locations__list">
         {data.map((item) => {
           return <LocationItem key={item.id} item={item} />;
         })}
@@ -26,16 +27,24 @@ export default LocationList;
 
 function LocationItem({ item }) {
   return (
-    <div className="locationItem">
-      <img src={item.xl_picture_url} alt={item.name} />
+    <div className="locations__item">
+      <img
+        className="locations-item__image"
+        src={item.xl_picture_url}
+        alt={item.name}
+      />
 
-      <div className="locationItemDesc">
-        <p className="location">{item.smart_location}</p>
-        <p className="name">{item.name}</p>
-        <p className="price">
-          €&nbsp;{item.price}&nbsp;<span>night</span>
-        </p>
-      </div>
+      <Link
+        to={`/hotels/${item.id}?lat=${item.latitude}&lng=${item.longitude}`}
+      >
+        <div className="locations-item__desc">
+          <p className="location">{item.smart_location}</p>
+          <p className="name">{item.name}</p>
+          <p className="price">
+            €&nbsp;{item.price}&nbsp;<span>night</span>
+          </p>
+        </div>
+      </Link>
     </div>
   );
 }
