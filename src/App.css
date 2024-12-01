@@ -186,11 +186,11 @@
     grid-column: 2/3;
     justify-self: end;
   }
-  .menu-links{
+  .menu-links {
     top: 4rem;
     right: 1rem;
   }
-  .date-dropDown{
+  .date-dropDown {
     left: -5rem;
   }
 }
@@ -213,7 +213,7 @@
   .search__btn {
     width: 100%;
   }
-  .date-dropDown{
+  .date-dropDown {
     left: 1rem;
   }
 }
@@ -262,7 +262,6 @@
 }
 
 /* room detail styles */
-
 .room {
   max-width: 1280px;
 }
@@ -305,13 +304,12 @@
 }
 
 /* map styles */
-
-.mapContainer {
+.map-container {
   flex: 1;
   background-color: var(--text-100);
   position: relative;
 }
-.mapContainer button.getLocation {
+.map-container button.get-location {
   padding: 0.3rem 0.5rem;
   font-size: 0.7rem;
   font-weight: bold;
@@ -326,6 +324,12 @@
 }
 .map {
   height: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .map {
+    height: 250px;
+  }
 }
 
 /* search list styles */
@@ -378,25 +382,31 @@
 }
 
 /* layout styles */
-
-.hotelLayout,
-.bookmarkLayout {
-  margin-top: 1rem;
+.hotel-layout,
+.bookmark-layout {
   display: flex;
-  justify-content: space-between;
-  height: calc(100vh - 130px);
   align-items: stretch;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  height: calc(100vh - 130px);
 }
 
 .sidebar {
-  width: 35%;
+  width: 50%;
   overflow-y: auto;
-  padding-right: 1rem;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 768px) {
+  .hotel-layout,
+  .bookmark-layout {
+    flex-direction: column-reverse;
+    height: auto;
+  }
+
   .sidebar {
-    width: 50%;
+    width: 100%;
+    overflow-y: visible;
   }
 }
 

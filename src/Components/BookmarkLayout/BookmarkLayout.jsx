@@ -6,7 +6,7 @@ function BookmarkLayout() {
   const { bookmarks } = useBookmarks();
 
   return (
-    <div className="bookmarkLayout">
+    <div className="bookmark-layout">
       <div className="sidebar">
         <Outlet />
       </div>

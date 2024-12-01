@@ -38,13 +38,13 @@ function Map({ markerLocations }) {
   }, [position, error]);
 
   return (
-    <div className="mapContainer">
+    <div className="map-container">
       <MapContainer
         className="map"
         center={mapCenter}
         scrollWheelZoom={true}
       >
-        <button onClick={getPosition} className="getLocation">
+        <button onClick={getPosition} className="get-location">
           {isLoadingPosition ? "Loading ..." : "Use Your Location"}
         </button>
 
@@ -81,7 +81,7 @@ function DetectClick() {
 
   useMapEvent({
     click: (e) => {
-      if (e.originalEvent.srcElement.className !== "getLocation") {
+      if (e.originalEvent.srcElement.className !== "get-location") {
         navigate(`/bookmarks/add?lat=${e.latlng.lat}&lng=${e.latlng.lng}`);
       }
     },

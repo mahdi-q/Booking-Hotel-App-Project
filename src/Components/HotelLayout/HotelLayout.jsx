@@ -6,7 +6,7 @@ function HotelLayout() {
   const { hotels } = useHotels();
 
   return (
-    <div className="hotelLayout">
+    <div className="hotel-layout">
       <div className="sidebar">
         <Outlet />
       </div>
