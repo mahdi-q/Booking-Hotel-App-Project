@@ -88,11 +88,11 @@ function AddNewBookmark() {
   if (geoCodingError) return <ErrorComponent>{geoCodingError}</ErrorComponent>;
 
   return (
-    <div className="addNewBookmark">
+    <div className="add-new-bookmark">
       <h2>Bookmark New Location</h2>
 
       <form className="form" onSubmit={handleAddNewBookmark}>
-        <div className="formControl">
+        <div className="form__control">
           <label htmlFor="cityName">City Name</label>
           <input
             type="text"
@@ -103,7 +103,7 @@ function AddNewBookmark() {
           />
         </div>
 
-        <div className="formControl">
+        <div className="form__control">
           <label htmlFor="country">Country</label>
           <input
             type="text"
@@ -115,7 +115,7 @@ function AddNewBookmark() {
           <ReactCountryFlag svg countryCode={countryCode} className="flag" />
         </div>
 
-        <div className="buttons">
+        <div className="form__buttons">
           <button
             className="btn btn--back"
             onClick={(e) => {

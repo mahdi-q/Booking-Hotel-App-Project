@@ -423,15 +423,14 @@
 }
 
 /* bookmark page style */
-
-.bookmarkList {
+.bookmarks-list {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   margin-top: 1rem;
 }
 
-.bookmarkList .bookmarkItem {
+.bookmark__item {
   border: 1px solid var(--text-400);
   border-radius: 1rem;
   padding: 1rem;
@@ -439,46 +438,44 @@
   align-items: center;
   justify-content: space-between;
 }
-
-.bookmarkList .bookmarkItem.current-bookmark {
+.bookmark__item.current-bookmark {
   border: 2px solid var(--primary-600);
   background-color: var(--text-100);
 }
 
-.bookmarkList .bookmarkItem .trash {
+.bookmark__item .trash {
   color: var(--rose-500);
   width: 1.1rem;
   height: 1.1rem;
 }
 
 /* form style */
-
-.addNewBookmark h2 {
+.add-new-bookmark h2 {
   margin-bottom: 1rem;
 }
 
-.form .formControl {
+.form .form__control {
   margin-bottom: 1rem;
   position: relative;
 }
 
-.formControl label {
+.form__control label {
   display: block;
   margin-bottom: 0.2rem;
 }
-.formControl input {
+.form__control input {
   border: 1px solid var(--text-400);
   padding: 0.5rem;
   border-radius: 0.5rem;
   width: 100%;
 }
-.formControl .flag {
+.form__control .flag {
   position: absolute;
   right: 1rem;
   top: 55%;
 }
 
-.buttons {
+.form__buttons {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -486,7 +483,7 @@
 
 /* login form styles */
 
-.loginContainer {
+.login-container {
   margin: 5rem auto;
   max-width: 25rem;
   border: 1px solid var(--text-300);
@@ -494,10 +491,10 @@
   border-radius: 1rem;
 }
 
-.loginContainer h2 {
+.login-container h2 {
   margin-bottom: 1rem;
 }
 
-.loginContainer button {
+.login-container button {
   width: 100%;
 }

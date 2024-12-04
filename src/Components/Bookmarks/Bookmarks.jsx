@@ -28,7 +28,7 @@ function Bookmark() {
     <div>
       <h2>Bookmark List</h2>
 
-      <div className="bookmarkList">
+      <div className="bookmarks-list">
         {bookmarks.map((item) => {
           return (
             <Link
@@ -58,7 +58,7 @@ function BookmarkItem({ item, currentBookmark, deleteBookmark }) {
 
   return (
     <div
-      className={`bookmarkItem ${
+      className={`bookmark__item ${
         item.id === currentBookmark?.id ? "current-bookmark" : ""
       }`}
     >

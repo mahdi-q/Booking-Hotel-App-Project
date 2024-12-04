@@ -37,7 +37,7 @@ function SingleBookmark() {
       <h2>{currentBookmark.cityName}</h2>
       <span>{currentBookmark.country}</span>
 
-      <div className="bookmarkList">
+      <div className="bookmarks-list">
         {filteredHotels.length === 0 ? (
           <span
             style={{

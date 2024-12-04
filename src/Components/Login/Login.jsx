@@ -21,10 +21,10 @@ function Login() {
   }, [isAuthenticated]);
 
   return (
-    <div className="loginContainer">
+    <div className="login-container">
       <h2>Login</h2>
       <form className="form" onSubmit={handleSubmit}>
-        <div className="formControl">
+        <div className="form__control">
           <label>Email</label>
           <input
             value={email}
@@ -35,7 +35,7 @@ function Login() {
           />
         </div>
 
-        <div className="formControl">
+        <div className="form__control">
           <label>Password</label>
           <input
             value={password}
@@ -46,7 +46,7 @@ function Login() {
           />
         </div>
 
-        <div className="buttons">
+        <div className="form__buttons">
           <button className="btn btn--primary">Login</button>
         </div>
       </form>
