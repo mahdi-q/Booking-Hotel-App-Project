@@ -10,7 +10,7 @@ function Hotels() {
   }
 
   return (
-    <div className="searchList">
+    <div className="search-list">
       <h2>Search Result : ({hotels.length})</h2>
 
       {hotels.map((item) => (
@@ -30,13 +30,13 @@ export default Hotels;
 export function SearchItem({ item, currentHotel }) {
   return (
     <div
-      className={`searchItem ${
-        item.id === currentHotel?.id ? "currentHotel" : ""
+      className={`search__item ${
+        item.id === currentHotel?.id ? "current-hotel" : ""
       }`}
     >
-      <img src={item.xl_picture_url} alt={item.name} />
+      <img className="search-item__image" src={item.xl_picture_url} alt={item.name} />
 
-      <div className="searchItemDesc">
+      <div className="search-item__desc">
         <p className="location">{item.smart_location}</p>
         <p className="name">{item.name}</p>
         <p className="price">

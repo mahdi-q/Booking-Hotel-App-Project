@@ -174,7 +174,7 @@
   }
 }
 
-@media screen and (max-width: 770px) {
+@media screen and (max-width: 768px) {
   .header__wellcome-text {
     justify-self: start;
   }
@@ -266,41 +266,55 @@
   max-width: 1280px;
 }
 
-.roomDetail {
+.room__detail {
   display: flex;
+  flex-direction: row;
   gap: 1.5rem;
 }
 
-.roomDetail img {
+.room__image {
   width: 35%;
   height: auto;
   object-fit: cover;
   border-radius: 0.8rem;
 }
-
-.roomInfo {
+.room__info {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.roomInfo .name {
+.room__info .name {
   font-size: 1.1rem;
 }
-.roomInfo .review {
+.room__info .review {
   color: var(--text-700);
 }
-.roomInfo .type {
+.room__info .type {
   color: var(--text-700);
 }
-.roomInfo .price {
+.room__info .price {
   color: var(--text-700);
 }
-.roomInfo .update {
+.room__info .update {
   display: flex;
   flex-direction: row;
   gap: 0.3rem;
   color: var(--text-400);
+}
+
+@media screen and (max-width: 670px) {
+  .room__detail {
+    flex-direction: column;
+  }
+
+  .room__image {
+    width: 100%;
+  }
+
+  .room__info{
+    gap: 1rem;
+  }
 }
 
 /* map styles */
@@ -333,14 +347,13 @@
 }
 
 /* search list styles */
-
-.searchList {
+.search-list {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.searchItem {
+.search__item {
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -348,36 +361,35 @@
   border-radius: 1rem;
   padding: 0.2rem;
 }
-
-.searchItem.currentHotel {
+.search__item.current-hotel {
   border: 1px solid var(--primary-600);
   border-radius: 1rem;
   padding: 0.2rem;
 }
 
-.searchItem img {
+.search-item__image {
   width: 6rem;
   height: 6rem;
   object-fit: cover;
   border-radius: 1rem;
 }
 
-.searchItem .searchItemDesc p {
+.search-item__desc p {
   margin-bottom: 0.5rem;
 }
-.searchItem .searchItemDesc .name {
-  color: var(--text-400);
+.search-item__desc .name {
+  color: var(--text-500);
 }
-.searchItem .searchItemDesc .location {
-  font-weight: 500;
+.search-item__desc .location {
+  font-weight: 700;
 }
-.searchItem .searchItemDesc .price {
+.search-item__desc .price {
   font-weight: 500;
   display: flex;
   align-items: center;
 }
-.searchItem .searchItemDesc .price span {
-  color: var(--text-400);
+.search-item__desc .price span {
+  color: var(--text-500);
   font-weight: 400;
 }
 

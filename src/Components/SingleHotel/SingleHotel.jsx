@@ -23,10 +23,11 @@ function SingleHotel() {
       <button className="btn btn--back" onClick={() => navigate(-1)}>
         <HiChevronDoubleLeft /> Back
       </button>
-      <div className="roomDetail">
-        <img src={currentHotel.xl_picture_url} alt={currentHotel.name} />
 
-        <div className="roomInfo">
+      <div className="room__detail">
+        <img className="room__image" src={currentHotel.xl_picture_url} alt={currentHotel.name} />
+
+        <div className="room__info">
           <h2 className="name">{currentHotel.name}</h2>
 
           <div className="review">
